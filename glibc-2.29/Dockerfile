@@ -16,19 +16,18 @@ RUN dpkg --add-architecture i386 && apt-get update && \
     zsh \
     ltrace \
     strace \
-    radare2 \
-    glibc-source \
     cmake \
+    radare2 \
     python-capstone \
     socat \
     netcat \
     ruby \
     vim \
     tmux \
+    libc6:i386 libncurses5:i386 libstdc++6:i386 \
     lxterminal && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-
 # python/ruby packages & gdb-plugin
 RUN pip install --no-cache-dir pwntools && \
     gem install one_gadget && \
@@ -44,6 +43,11 @@ RUN wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 RUN sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 RUN chsh -s /bin/zsh
+RUN cd ~/ && \
+    git clone https://github.com/chen-robert/dot-files && \
+    cd ./dot-files && \
+    cp .vimrc ../ && \
+    cd .. && rm -rf dot-files
 
 ENV LANG C.UTF-8
 
