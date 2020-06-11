@@ -1,1 +1,2 @@
-docker run -it --cap-add sys_ptrace --security-opt seccomp=unconfined -v $(pwd):/pwn pwn:27
+dir=${0%/*}
+docker run -it --cap-add sys_ptrace --security-opt seccomp=unconfined -v $(pwd)${dir#?}/../../:/pwn pwn:27
