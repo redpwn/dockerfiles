@@ -1,7 +1,8 @@
 FROM ubuntu:19.04
 
 # Apt packages
-RUN dpkg --add-architecture i386 && apt-get update && \
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list && \
+    dpkg --add-architecture i386 && apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -qy \
     git nasm  python \
     build-essential \
