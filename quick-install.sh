@@ -1,0 +1,1 @@
+apt-get update && apt-get install -qy python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential gdb wget tmux vim && wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh && export LC_CTYPE=C.UTF-8 && python3 -m pip install --upgrade pip && python3 -m pip install --upgrade pwntools
